@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Pensamento } from '../pensamento.js';
 
 @Component({
   selector: 'app-pensamento',
@@ -7,15 +8,24 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PensamentoComponent implements OnInit {
 
-  @Input() pensamento = {
-    conteudo: 'I love angular',
-    autoria: 'Lekao',
-    modelo: 'modelo3'
+  @Input() pensamento: Pensamento = {
+    id: 0,
+    conteudo: 'Bora virar o mestre do Angular',
+    autoria: 'Marlon Augusto',
+    modelo: 'modelo2'
   }
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  larguraPensamento(): string {
+    if(this.pensamento.conteudo.length >= 256){
+      return 'pensamento-g'
+    }
+    return 'pensamento-p'
+  }
+
 
 }
